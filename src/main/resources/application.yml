@@ -1,0 +1,5 @@
+shareme:
+  urls:
+    facebook: https://www.facebook.com/sharer/sharer.php?u={link}&t={title}
+    twitter: https://twitter.com/intent/tweet?text={title}&url={link}&related={related}
+    messenger: https://www.facebook.com/dialog/send?display=popup&link={link}&redirect_uri={redirect}&app_id={appId}

@@ -1,6 +1,7 @@
 package com.mharawi.shareme.domain;
 
 import com.mharawi.shareme.config.SharingDomainsConfiguration;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 import org.springframework.web.util.UriComponents;
@@ -20,11 +21,16 @@ public class SharingDomainBuilder {
         this.properties = properties;
     }
 
+    @Nullable
     public URI build(String name, Map<String, ?> context) {
-        return UriComponentsBuilder.fromUriString(properties.getUrls().get(name))
-                .build()
-                .expand(new OptionalMapTemplateVariables(context))
-                .toUri();
+        String domain = properties.getDomains().get(name);
+        if (domain != null) {
+            return UriComponentsBuilder.fromUriString(domain)
+                    .build()
+                    .expand(new OptionalMapTemplateVariables(context))
+                    .toUri();
+        }
+        return null;
     }
 
     private static class OptionalMapTemplateVariables implements UriComponents.UriTemplateVariables {

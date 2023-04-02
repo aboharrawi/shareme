@@ -1,5 +1,18 @@
-shareme:
-  urls:
+share-me:
+  domains:
     facebook: https://www.facebook.com/sharer/sharer.php?u={link}&t={title}
     twitter: https://twitter.com/intent/tweet?text={title}&url={link}&related={related}
     messenger: https://www.facebook.com/dialog/send?display=popup&link={link}&redirect_uri={redirect}&app_id={appId}
+    whatsapp: https://api.whatsapp.com/send?text={link}
+    mailto: mailto:?body={link}
+    linkedin: https://www.linkedin.com/shareArticle?url={link}
+    gmail: https://mail.google.com/mail/u/0/?view=cm&body={link}
+
+management:
+  trace:
+    http:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: httptrace

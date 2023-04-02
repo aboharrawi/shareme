@@ -24,8 +24,13 @@ public class ShareLinkController {
     @GetMapping("/share/{name}")
     public ResponseEntity<?> share(@PathVariable String name, @RequestParam Map<String, String> params) {
         URI target = sharingDomainBuilder.build(name, params);
-        return ResponseEntity.status(HttpStatus.PERMANENT_REDIRECT)
-                .location(target)
+        if (target != null) {
+            return ResponseEntity.status(HttpStatus.PERMANENT_REDIRECT)
+                    .location(target)
+                    .cacheControl(CacheControl.noCache())
+                    .build();
+        }
+        return ResponseEntity.notFound()
                 .cacheControl(CacheControl.noCache())
                 .build();
     }

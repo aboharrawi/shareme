@@ -6,16 +6,16 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 
 @Configuration
-@ConfigurationProperties("shareme")
+@ConfigurationProperties("share-me")
 public class SharingDomainsConfiguration {
 
-    Map<String, String> urls;
+    Map<String, String> domains;
 
-    public void setUrls(Map<String, String> urls) {
-        this.urls = urls;
+    public void setDomains(Map<String, String> domains) {
+        this.domains = domains;
     }
 
-    public Map<String, String> getUrls() {
-        return urls;
+    public Map<String, String> getDomains() {
+        return domains;
     }
 }
